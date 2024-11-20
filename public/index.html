@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego de Cartas</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-gray-900 to-gray-700 text-white flex flex-col items-center justify-center min-h-screen">
+    <div class="container w-full max-w-md bg-gray-800 rounded-lg p-6 shadow-lg space-y-4">
+
+        <!-- Solicitar nombre de usuario -->
+        <div id="usernameSection" class="space-y-4">
+            <input type="text" id="usernameInput" placeholder="Ingresa tu nombre de usuario" class="w-full p-2 rounded-md text-black" />
+            <button id="usernameButton" class="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700">Ingresar</button>
+        </div>
+
+        <!-- Opciones para crear o unirse a una sala -->
+        <div id="roomOptions" class="hidden space-y-4">
+            <button id="createRoomButton" class="w-full bg-green-600 text-white py-2 rounded-md hover:bg-green-700">Crear una Sala</button>
+            <input type="text" id="roomInput" placeholder="Ingresa el código de sala" class="w-full p-2 rounded-md text-black" />
+            <button id="joinRoomButton" class="w-full bg-yellow-600 text-white py-2 rounded-md hover:bg-yellow-700">Unirse a una Sala</button>
+        </div>
+
+        <!-- Información de la sala -->
+        <div id="gameArea" class="hidden space-y-4">
+            <div class="flex justify-between items-center bg-gray-700 p-2 rounded-lg shadow">
+                <h4 class="text-sm font-bold">Sala: <span id="roomName"></span></h4>
+                <div class="text-sm">
+                    <span>Jugadores Conectados: </span>
+                    <ul id="userList" class="inline-block"></ul>
+                </div>
+            </div>
+
+            <!-- Información del oponente -->
+            <div id="opponentStats" class="opponent-stats hidden flex justify-between bg-gray-700 p-3 rounded-lg shadow-lg space-y-2">
+                <div>
+                    <h3 class="flex items-center"><img src="imagen/vida.png" alt="Vida" class="w-6 mr-2"> de <span id="opponentName">Oponente</span>: <span id="opponentLife">15</span></h3> 
+                    <h3 class="flex items-center"><img src="imagen/defensa.png" alt="Defensa" class="w-6 mr-2"> de <span id="opponentNameDefense">Oponente</span>: <span id="opponentDefense">0</span></h3>
+                </div>
+                <div>
+                    <h3>Estados Alterados:</h3>
+                    <ul id="opponentStatusList" class="flex gap-2"></ul>
+                </div>
+            </div>
+
+            <!-- Estadísticas del jugador -->
+            <div class="flex justify-around text-lg font-bold mb-4">
+                <div class="text-center">
+                    <h3 class="flex items-center justify-center"><img src="imagen/vida.png" alt="Vida" class="w-6 mr-2">: <span id="myLife">15</span></h3>
+                    <div class="flex space-x-2 justify-center mt-2">
+                        <button class="bg-red-600 w-8 h-8 rounded-full text-white" onclick="updateLife(-1, 'my')">-</button>
+                        <button class="bg-green-600 w-8 h-8 rounded-full text-white" onclick="updateLife(1, 'my')">+</button>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <h3 class="flex items-center justify-center"><img src="imagen/defensa.png" alt="Defensa" class="w-6 mr-2">: <span id="myDefense">0</span></h3>
+                    <div class="flex space-x-2 justify-center mt-2">
+                        <button class="bg-red-600 w-8 h-8 rounded-full text-white" onclick="updateDefense(-1, 'my')">-</button>
+                        <button class="bg-green-600 w-8 h-8 rounded-full text-white" onclick="updateDefense(1, 'my')">+</button>
+                    </div>
+                </div>
+                <div>
+                    <h3>Mi Estado:</h3>
+                    <ul id="myStatusList" class="space-y-1"></ul>
+                </div>
+            </div>
+
+            <!-- Turnos y acciones -->
+            <div>
+                <h3 class="text-lg font-semibold">Turno actual: <span id="turnCounter">1</span></h3>
+                <button id="nextTurnButton" class="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700">Siguiente Turno</button>
+            </div>
+
+            <div>
+                <h3 class="text-lg font-semibold">Tirar Dado (10 caras):</h3>
+                <button id="rollDiceButton" class="w-full bg-purple-600 text-white py-2 rounded-md hover:bg-purple-700">Tirar Dado</button>
+                <p class="mt-2">Resultado del Dado: <span id="diceResult">0</span></p>
+            </div>
+
+            <!-- Acciones del jugador -->
+            <div>
+                <div class="grid grid-cols-3 gap-2">
+                    <button onclick="attack('light')" class="bg-gray-600 text-white py-2 rounded-md hover:bg-gray-700"><img src="imagen/Espada1.png" alt="ataque" class="w-20 mr-2 mx-auto"></button>
+                    <button onclick="attack('normal')" class="bg-gray-600 text-white py-2 rounded-md hover:bg-gray-700"><img src="imagen/Espada2.png" alt="ataque" class="w-20 mr-2 mx-auto"></button>
+                    <button onclick="attack('critical')" class="bg-gray-600 text-white py-2 rounded-md hover:bg-gray-700"><img src="imagen/Espada3.png" alt="ataque" class="w-20 mr-2 mx-auto"></button>
+                    <button onclick="buff('smallDefense')" class="bg-gray-600 text-white py-2 rounded-md hover:bg-gray-700"><img src="imagen/Escudo1.png" alt="ataque" class="w-20 mr-2 mx-auto"></button>
+                    <button onclick="buff('mediumDefense')" class="bg-gray-600 text-white py-2 rounded-md hover:bg-gray-700"><img src="imagen/Escudo2.png" alt="ataque" class="w-20 mr-2 mx-auto"></button>
+                    <button onclick="buff('largeDefense')" class="bg-gray-600 text-white py-2 rounded-md hover:bg-gray-700"><img src="imagen/Escudo3.png" alt="ataque" class="w-20 mr-2 mx-auto"></button>
+                    <button onclick="buff('smallLife')" class="bg-gray-600 text-white py-2 rounded-md hover:bg-gray-700"><img src="imagen/Corazon1.png" alt="ataque" class="w-20 mr-2 mx-auto"></button>
+                    <button onclick="buff('mediumLife')" class="bg-gray-600 text-white py-2 rounded-md hover:bg-gray-700"><img src="imagen/Corazon2.png" alt="ataque" class="w-20 mr-2 mx-auto"></button>
+                    <button onclick="buff('largeLife')" class="bg-gray-600 text-white py-2 rounded-md hover:bg-gray-700"><img src="imagen/Corazon3.png" alt="ataque" class="w-20 mr-2 mx-auto"></button>
+
+                </div>
+            </div>
+
+            <!-- Estados alterados -->
+            <div class="mt-4">
+                <div class="flex gap-2 justify-center">
+                    <button onclick="applyStatus('bleed')"><img src="imagen/bleed.png" alt="sangrado" class="w-12"></button>
+                    <button onclick="applyStatus('freeze')"><img src="imagen/freeze.png" alt="congelar" class="w-12"></button>
+                    <button onclick="applyStatus('paralyze')"><img src="imagen/paralyze.png" alt="paralizar" class="w-12"></button>
+                    <button onclick="applyStatus('fire')"><img src="imagen/fire.png" alt="fuego" class="w-12"></button>
+                    <button onclick="applyStatus('luck')"><img src="imagen/luck.png" alt="suerte" class="w-12"></button>
+                </div>
+            </div>
+
+            <!-- Botón para exportar la partida -->
+            <button id="exportButton" class="w-full bg-gray-600 text-white py-2 mt-4 rounded-md hover:bg-gray-700">Exportar Partida</button>
+        </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

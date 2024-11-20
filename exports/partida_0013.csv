@@ -1,0 +1,22 @@
+Turno,Jugador,Acción,Vida,Defensa,Estados
+1,Nelson,Vida: 15 -> 16, Defensa: 0 -> 1, Estados: {},16,1,{}
+1,Nico,Vida: 15 -> 14, Defensa: 0 -> 0, Estados: {},14,0,{}
+3,Nico,Vida: 14 -> 15, Defensa: 0 -> 0, Estados: {},15,0,{}
+3,Nelson,Vida: 16 -> 14, Defensa: 1 -> 0, Estados: {"paralyze":"applied","bleed":"applied"},14,0,{"paralyze":"applied","bleed":"applied"}
+5,Nelson,Vida: 14 -> 13, Defensa: 0 -> 2, Estados: {},13,2,{}
+5,Nico,Vida: 15 -> 14, Defensa: 0 -> 0, Estados: {},14,0,{}
+7,Nelson,Vida: 13 -> 10, Defensa: 2 -> 0, Estados: {},10,0,{}
+8,Nelson,Vida: 10 -> 9, Defensa: 0 -> 4, Estados: {},9,4,{}
+8,Nico,Vida: 14 -> 11, Defensa: 0 -> 0, Estados: {},11,0,{}
+10,Nelson,Vida: 9 -> 9, Defensa: 4 -> 0, Estados: {"paralyze":"applied","fire":"applied"},9,0,{"paralyze":"applied","fire":"applied"}
+11,Nelson,Vida: 9 -> 8, Defensa: 0 -> 0, Estados: {},8,0,{}
+12,Nelson,Vida: 8 -> 4, Defensa: 0 -> 0, Estados: {},4,0,{}
+13,Nelson,Vida: 4 -> 3, Defensa: 0 -> 6, Estados: {},3,6,{}
+13,Nico,Vida: 11 -> 9, Defensa: 0 -> 0, Estados: {"paralyze":"applied"},9,0,{"paralyze":"applied"}
+15,Nelson,Vida: 3 -> 3, Defensa: 6 -> 10, Estados: {},3,10,{}
+15,Nico,Vida: 9 -> 7, Defensa: 0 -> 0, Estados: {},7,0,{}
+17,Nelson,Vida: 3 -> 3, Defensa: 10 -> 7, Estados: {"bleed":"applied"},3,7,{"bleed":"applied"}
+17,Nico,Vida: 7 -> 7, Defensa: 0 -> 1, Estados: {},7,1,{}
+19,Nelson,Vida: 3 -> 2, Defensa: 7 -> 9, Estados: {},2,9,{}
+19,Nico,Vida: 7 -> 5, Defensa: 1 -> 0, Estados: {},5,0,{}
+21,Nelson,Vida: 2 -> 1, Defensa: 9 -> 5, Estados: {},1,5,{}

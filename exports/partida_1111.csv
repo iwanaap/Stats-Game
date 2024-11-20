@@ -1,0 +1,46 @@
+Turno,Jugador,Acción,Vida,Defensa,Estados
+1,ana,Vida: 15 -> 14, Defensa: 0 -> 0,14,0,{}
+2,ana,Vida: 14 -> 13, Defensa: 0 -> 0,13,0,{}
+3,ana,Vida: 13 -> 12, Defensa: 0 -> 0,12,0,{}
+4,nacho,Vida: 15 -> 16, Defensa: 0 -> 0,16,0,{}
+5,nacho,Vida: 16 -> 17, Defensa: 0 -> 0,17,0,{}
+6,nacho,Vida: 17 -> 18, Defensa: 0 -> 0,18,0,{}
+7,nacho,Aplicado bleed,18,0,{"bleed":3}
+8,nacho,Vida: 18 -> 17, Defensa: 0 -> 0,17,0,{"bleed":3}
+9,nacho,Vida: 17 -> 17, Defensa: 0 -> 0,17,0,{"bleed":3}
+10,nacho,Aplicado freeze,17,0,{"bleed":3,"freeze":3}
+11,nacho,Vida: 17 -> 16, Defensa: 0 -> 0,16,0,{"bleed":3,"freeze":3}
+12,nacho,Vida: 16 -> 16, Defensa: 0 -> 0,16,0,{"bleed":3,"freeze":3}
+13,nacho,Aplicado fire,16,0,{"bleed":3,"freeze":3,"fire":3}
+14,ana,Aplicado luck,12,0,{"luck":3}
+15,nacho,Vida: 16 -> 15, Defensa: 0 -> 0,15,0,{"bleed":3,"freeze":3,"fire":3}
+16,nacho,Vida: 15 -> 14, Defensa: 0 -> 0,14,0,{"bleed":3,"freeze":3,"fire":3}
+17,nacho,Vida: 14 -> 15, Defensa: 0 -> 0,15,0,{"bleed":3,"freeze":3,"fire":3}
+18,nacho,Vida: 15 -> 14, Defensa: 0 -> 0,14,0,{"bleed":3,"freeze":3,"fire":3}
+19,nacho,Vida: 14 -> 13, Defensa: 0 -> 0,13,0,{"bleed":3,"freeze":3,"fire":3}
+20,nacho,Vida: 13 -> 13, Defensa: 0 -> 0,13,0,{"bleed":3,"freeze":3,"fire":3}
+21,ana,Aplicado bleed,12,0,{"luck":3,"bleed":3}
+22,ana,Aplicado paralyze,12,0,{"luck":3,"bleed":3,"paralyze":3}
+23,ana,Aplicado freeze,12,0,{"luck":3,"bleed":3,"paralyze":3,"freeze":3}
+24,nacho,Vida: 13 -> 12, Defensa: 0 -> 0,12,0,{"bleed":3,"freeze":3,"fire":3}
+25,ana,Vida: 12 -> 11, Defensa: 0 -> 0,11,0,{"luck":3,"bleed":3,"paralyze":3,"freeze":3}
+26,nacho,Vida: 12 -> 12, Defensa: 0 -> 0,12,0,{"bleed":3,"freeze":3,"fire":3}
+27,ana,Vida: 11 -> 11, Defensa: 0 -> 0,11,0,{"luck":3,"bleed":3,"paralyze":3,"freeze":3}
+28,ana,Vida: 11 -> 10, Defensa: 0 -> 0,10,0,{"luck":3,"bleed":3,"paralyze":3,"freeze":3}
+29,ana,Vida: 10 -> 10, Defensa: 0 -> 0,10,0,{"luck":3,"bleed":3,"paralyze":3,"freeze":3}
+30,ana,Aplicado fire,10,0,{"luck":3,"bleed":3,"paralyze":3,"freeze":3,"fire":3}
+31,ana,Vida: 10 -> 9, Defensa: 0 -> 0,9,0,{"luck":3,"bleed":3,"paralyze":3,"freeze":3,"fire":3}
+32,ana,Vida: 9 -> 8, Defensa: 0 -> 0,8,0,{"luck":3,"bleed":3,"paralyze":3,"freeze":3,"fire":3}
+33,ana,Vida: 8 -> 9, Defensa: 0 -> 0,9,0,{"luck":3,"bleed":3,"paralyze":3,"freeze":3,"fire":3}
+34,ana,Vida: 9 -> 8, Defensa: 0 -> 0,8,0,{"luck":3,"bleed":3,"paralyze":3,"freeze":3,"fire":3}
+35,ana,Vida: 8 -> 7, Defensa: 0 -> 0,7,0,{"luck":3,"bleed":3,"paralyze":3,"freeze":3,"fire":3}
+36,ana,Vida: 7 -> 7, Defensa: 0 -> 0,7,0,{"luck":3,"bleed":3,"paralyze":3,"freeze":3,"fire":3}
+37,nacho,Vida: 12 -> 13, Defensa: 0 -> 0,13,0,{"bleed":3,"freeze":3,"fire":3}
+38,nacho,Vida: 13 -> 14, Defensa: 0 -> 0,14,0,{"bleed":3,"freeze":3,"fire":3}
+39,ana,Vida: 7 -> 6, Defensa: 0 -> 0,6,0,{"luck":3,"bleed":3,"paralyze":3,"freeze":3,"fire":3}
+40,ana,Vida: 6 -> 6, Defensa: 0 -> 0,6,0,{"luck":3,"bleed":3,"paralyze":3,"freeze":3,"fire":3}
+41,ana,Aplicado fire,6,0,{"luck":3,"bleed":3,"paralyze":3,"freeze":3,"fire":3}
+42,ana,Vida: 6 -> 5, Defensa: 0 -> 0,5,0,{"luck":3,"bleed":3,"paralyze":3,"freeze":3,"fire":3}
+43,ana,Vida: 5 -> 5, Defensa: 0 -> 0,5,0,{"luck":3,"bleed":3,"paralyze":3,"freeze":3,"fire":3}
+44,ana,Vida: 5 -> 4, Defensa: 0 -> 0,4,0,{"luck":3,"bleed":3,"paralyze":3,"freeze":3,"fire":3}
+45,ana,Vida: 4 -> 4, Defensa: 0 -> 0,4,0,{"luck":3,"bleed":3,"paralyze":3,"freeze":3,"fire":3}

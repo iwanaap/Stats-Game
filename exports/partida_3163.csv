@@ -1,0 +1,8 @@
+Turno,Jugador,Acción,Vida,Defensa,Estados
+1,nacho,Vida: 15 -> 13, Defensa: 0 -> 0, Estados: undefined,13,0,
+2,nacho,Vida: 13 -> undefined, Defensa: 0 -> undefined, Estados: {"freeze":"applied"},,,{"freeze":"applied"}
+2,ana,Vida: 15 -> 16, Defensa: 0 -> 1, Estados: undefined,16,1,
+4,ana,Vida: 16 -> undefined, Defensa: 1 -> undefined, Estados: {"fire":"applied","bleed":"applied","paralyze":"applied"},,,{"fire":"applied","bleed":"applied","paralyze":"applied"}
+5,ana,Vida: 16 -> 12, Defensa: 1 -> 1, Estados: undefined,12,1,
+5,nacho,Vida: 13 -> undefined, Defensa: 0 -> undefined, Estados: {"freeze":"applied","paralyze":"applied"},,,{"freeze":"applied","paralyze":"applied"}
+7,ana,Vida: 12 -> 11, Defensa: 1 -> 0, Estados: undefined,11,0,
