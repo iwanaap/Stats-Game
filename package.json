@@ -1,7 +1,7 @@
 {
-  "name": "mi-juego-de-cartas",
+  "name": "Game-Stats",
   "version": "1.0.0",
-  "description": "Un juego de cartas en línea con salas privadas",
+  "description": "Estadísticas del juego de cartas Rulkanis",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
