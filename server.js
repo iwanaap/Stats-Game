@@ -182,6 +182,14 @@ io.on('connection', (socket) => {
     );
     return csv;
   }
+
+  // ANIMACIONES
+  socket.on('triggerAnimation', ({ room, effectType }) => {
+    console.log(`Animación recibida: ${effectType} para sala: ${room}`);
+    io.to(room).emit('playAnimation', { effectType }); // Emitir a todos en la sala
+  });
+
+
 });
 
 app.get('/exports/:filename', (req, res) => {

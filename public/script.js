@@ -10,6 +10,8 @@ socket.on('connect', () => {
   console.log('Conectado al servidor');
 });
 
+
+
 window.onload = () => {
   // Esconder inicialmente las estadísticas del oponente
   document.getElementById('opponentStats').classList.add('hidden');
@@ -60,18 +62,29 @@ window.onload = () => {
   socket.on('userList', (users) => {
     const userList = document.getElementById('userList');
     userList.innerHTML = ''; // Limpiar lista de usuarios
+
     users.forEach((user) => {
-      const userItem = document.createElement('li');
-      userItem.textContent = user;
-      userList.appendChild(userItem);
-      if (user !== username) {
-        opponent.username = user;
-        document.getElementById('opponentName').textContent = user;
-        document.getElementById('opponentNameDefense').textContent = user;
-        document.getElementById('opponentStats').classList.remove('hidden');
-      }
+        const userItem = document.createElement('li');
+        userItem.textContent = user;
+        userList.appendChild(userItem);
+
+        // Actualizar el oponente
+        if (user !== username) {
+            opponent.username = user;
+            document.getElementById('opponentName').textContent = user;
+            document.getElementById('opponentNameDefense').textContent = user;
+            document.getElementById('opponentStats').classList.remove('hidden');
+        }
     });
-  });
+
+    // Mostrar/ocultar el cuadro de "Esperando a tu rival..."
+    if (users.length === 1) {
+        showWaitingDialog(); // Mostrar el cuadro si solo hay un usuario
+    } else if (users.length > 1) {
+        hideWaitingDialog(); // Ocultar el cuadro cuando hay más de un usuario
+    }
+});
+
 
   socket.on('updateStats', (data) => {
     if (data.username === username) {
@@ -409,5 +422,74 @@ function applyFireEffect(target) {
     } else {
       updateLife(-1, 'opponent');
     }
+  }
+}
+
+
+//  ANIMACIÓN
+
+// Emitir animación al servidor
+function triggerAnimation(effectType) {
+  socket.emit('triggerAnimation', { room, effectType });
+  console.log(`Enviando animación: ${effectType} a la sala: ${room}`);
+}
+
+// Escuchar evento desde el servidor
+socket.on('playAnimation', ({ effectType }) => {
+  console.log(`Reproduciendo animación: ${effectType}`);
+  const overlay = document.getElementById('animationOverlay');
+  const effect = document.getElementById('animationEffect');
+
+  if (!overlay || !effect) {
+      console.error('Elementos de animación no encontrados.');
+      return;
+  }
+
+  const effects = {
+      fire: 'imagen/fuego.gif',
+      bleed: 'imagen/sangrado.gif',
+      freeze: 'imagen/hielo.gif',
+      paralyze: 'imagen/paralizar.gif',
+      luck: 'imagen/suerte.gif',
+  };
+
+  if (!effects[effectType]) {
+      console.error(`Tipo de efecto no válido: ${effectType}`);
+      return;
+  }
+
+  // Mostrar la animación
+  effect.src = effects[effectType];
+  overlay.classList.remove('hidden');
+
+  setTimeout(() => {
+      overlay.classList.add('hidden');
+      effect.src = ''; // Limpiar la imagen
+  }, 1000);
+});
+
+
+
+// Ejemplo: Vincular las animaciones a los botones
+document.querySelectorAll('button').forEach(button => {
+  button.addEventListener('click', () => {
+      const effectType = button.getAttribute('data-effect'); // Agregar atributo `data-effect` a tus botones
+      if (effectType) triggerAnimation(effectType);
+  });
+});
+
+
+// DIALOGO DE ESPERA
+function showWaitingDialog() {
+  const waitingDialog = document.getElementById('waitingDialog');
+  if (waitingDialog) {
+      waitingDialog.classList.remove('hidden');
+  }
+}
+
+function hideWaitingDialog() {
+  const waitingDialog = document.getElementById('waitingDialog');
+  if (waitingDialog) {
+      waitingDialog.classList.add('hidden');
   }
 }

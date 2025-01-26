@@ -4,6 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Juego de Cartas</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body class="bg-gradient-to-b from-gray-900 to-gray-700 text-white flex flex-col items-center justify-center min-h-screen">
     <div class="container w-full max-w-md bg-gray-800 rounded-lg p-6 shadow-lg space-y-4">
@@ -23,6 +24,13 @@
 
         <!-- Información de la sala -->
         <div id="gameArea" class="hidden space-y-4">
+            <!--  Cuadro de dialogo   -->
+            <div id="waitingDialog" class="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75 z-50">
+                <div class="bg-white p-6 rounded-lg shadow-lg text-center">
+                    <p class="text-black text-lg font-semibold">Esperando a tu rival...</p>
+                </div>
+            </div>
+            
             <div class="flex justify-between items-center bg-gray-700 p-2 rounded-lg shadow">
                 <h4 class="text-sm font-bold">Sala: <span id="roomName"></span></h4>
                 <div class="text-sm">
@@ -99,10 +107,16 @@
                     <button onclick="applyStatus('bleed')"><img src="imagen/bleed.png" alt="sangrado" class="w-12"></button>
                     <button onclick="applyStatus('freeze')"><img src="imagen/freeze.png" alt="congelar" class="w-12"></button>
                     <button onclick="applyStatus('paralyze')"><img src="imagen/paralyze.png" alt="paralizar" class="w-12"></button>
-                    <button onclick="applyStatus('fire')"><img src="imagen/fire.png" alt="fuego" class="w-12"></button>
+                    <button data-effect="fire" onclick="applyStatus('fire')"><img src="imagen/fire.png" alt="fuego" class="w-12"></button>
                     <button onclick="applyStatus('luck')"><img src="imagen/luck.png" alt="suerte" class="w-12"></button>
                 </div>
             </div>
+
+            <!-- Animación de efecto -->
+            <div id="animationOverlay" class="hidden fixed inset-0 flex items-center justify-center z-50">
+                <img id="animationEffect" src="" alt="Efecto de animación" class="w-40 h-40">
+            </div>
+            
 
             <!-- Botón para exportar la partida -->
             <button id="exportButton" class="w-full bg-gray-600 text-white py-2 mt-4 rounded-md hover:bg-gray-700">Exportar Partida</button>
